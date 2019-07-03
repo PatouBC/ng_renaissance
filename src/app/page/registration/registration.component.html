@@ -1,0 +1,72 @@
+<div class="registration"
+     fxLayout
+     fxLayoutAlign="space-evenly center center"
+     fxLayout.lt-md="column">
+    <app-login></app-login>
+    <mat-card *ngIf="!registrationDone">
+        <ngb-alert type="danger" *ngIf="registerFailed" (close)="registerFailed = false">
+            Une erreur est survenue, veuillez consulter l'administrateur du site
+        </ngb-alert>
+        <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
+        <mat-card-title class="text-center">Créer un compte</mat-card-title>
+        <mat-card-content>
+            <form class="form-content" [formGroup]="registerForm">
+                <mat-form-field>
+                    <input matInput
+                           type="text"
+                           placeholder="Identifiant"
+                           formControlName="username"
+                           autocomplete="off" required/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput
+                           type="text"
+                           placeholder="Nom"
+                           formControlName="name"
+                           autocomplete="off" required/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput
+                           type="text"
+                           placeholder="Prénom"
+                           formControlName="firstname"
+                           autocomplete="off" required/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="email"
+                           placeholder="email"
+                           formControlName="email"
+                           autocomplete="Off" required/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password"
+                           placeholder="{{ password.errors?.pattern ?
+                       'Minimum 8 charactères, au moins une majuscule, une minuscule et un chiffre' :
+                       'Mot de passe' }}"
+                           formControlName="password"
+                           autocomplete="Off" required/>
+                </mat-form-field>
+                <mat-checkbox formControlName="rgpd">
+                    <span id="rgpd">J'accepte <a routerLink="/confidential">la politique de confidentialité</a></span>
+                </mat-checkbox>
+                <button class="mt-3" mat-flat-button
+                        [disabled]="loading || registerForm.invalid"
+                        (click)="register()"
+                        color="primary">
+                    <span>Envoyer</span>
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="registrationDone">
+        <mat-card-title class="text-center">Enregistrement réalisé</mat-card-title>
+        <mat-card-content>
+            Veuillez consulter votre email afin de confirmer votre inscription.
+            Vous pourrez ensuite vous connecter.
+        </mat-card-content>
+    </mat-card>
+
+</div>
+
+
+

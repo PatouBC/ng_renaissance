@@ -1,0 +1,45 @@
+<div fxLayout="row"  fxLayoutAlign="center center">
+    <mat-card >
+      <ngb-alert type="danger" *ngIf="submitFailed" (close)="submitFailed = false">
+        Le couple identifiant/mot de passe n'est pas valide
+      </ngb-alert>
+      <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
+      <mat-card-title class="text-center">Informations personnelles</mat-card-title>
+      <mat-card-content  >
+        <form fxLayout="column" [formGroup]="userForm">
+          <mat-form-field>
+            <input class="readonly" matInput
+                   placeholder="identifiant"
+                   formControlName="username"
+                   [readonly]="readonly"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input class="readonly" matInput
+                   placeholder="email"
+                   formControlName="email"
+                   [readonly]="readonly"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="nom"
+                   formControlName="name"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="prénom"
+                   formControlName="firstname"/>
+          </mat-form-field>
+          <div fxLayoutAlign="center center">
+            <button class="mt-3" mat-flat-button
+                    [disabled]="loading || userForm.invalid"
+                    (click)="saveProfile()"
+                    color="primary">
+              <span>Modifier</span>
+            </button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+</div>
+

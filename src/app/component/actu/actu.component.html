@@ -1,0 +1,26 @@
+<div class="actu">
+    <h3>Rencontrons-nous !</h3>
+    <mat-divider></mat-divider>
+    <p>Découvrez mon actualité et n'hésitez pas à venir me rencontrer lors de ces manifestations au
+        cours desquelles j'aurai le plaisir de vous faire découvrir les bien-faits de ces merveilleux
+        produits !</p>
+</div>
+<div fxLayoutAlign="center center " style="width: 100%">
+    <mat-spinner *ngIf="loading" [diameter]="25" ></mat-spinner>
+</div >
+<div class="actu" *ngFor="let actu of actus">
+    <h4>{{ actu.title}}</h4>
+    <mat-divider></mat-divider>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div [innerHTML]="actu.description | html" class="description"></div>
+        <div class="imgContainer">
+            <app-image
+                    [imgPath]="actu.image.imgpath"
+                    [alt]="actu.image.alt"
+                    [className]="big">
+            </app-image>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.logo{
+  background-image: url("../../../../assets/images/logo300-re-naissance-claire-body.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 25vw;
+}
+.entete{
+  background-image: url("../../../../assets/images/rescue3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+}
+.container-fluid{
+  min-height: 80vh;
+}
+.descript{
+  padding :40px ;
+}
+.titleBand{
+  background-color: #612C5D;
+  color: white;
+}
+.pageTitle{
+  font-size: 2em;
+}
+.prodTitle{
+  font-size: 25px;
+  color: #612C5D;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.arrow{
+  font-size: 17px;
+  line-height: 1.5;
+}
+.back{
+  font-size: 10px;
+}

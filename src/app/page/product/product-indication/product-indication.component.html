@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div fxLayout="row">
+        <div class="col p-0 entete">
+            <div class="col-3 p-0 text-center logo"></div>
+        </div>
+    </div>
+    <div fxLayoutAlign="center center " class="pageTitle titleBand">
+        <div>A chaque émotion, ses remèdes  : {{ indication?.description }}</div>
+    </div>
+    <button class="btn btn-sm " mat-flat-button (click)="backClicked()">
+        <mat-icon class="material-icons arrow">arrow_back</mat-icon>
+        <span class="back">Retour vers la page précédente</span>
+    </button>
+    <div fxLayoutAlign="center center " style="width: 100%">
+        <mat-spinner *ngIf="loading" [diameter]="25" ></mat-spinner>
+    </div >
+    <div class="descript">
+        <div class="listing">
+            <div fxLayout="row wrap" fxLayoutAlign="center center">
+                <div *ngFor="let product of products">
+                    <div *ngFor="let indication of product.indications">
+                        <div *ngIf="indication.description === val" class="vignette">
+                            <app-image
+                                    [imgPath]="product.image.imgpath"
+                                    routerLink="/product/detail/{{product.id}}">
+                            </app-image>
+                            <div class="imgTitle">{{ product.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-cookie></app-cookie>
+

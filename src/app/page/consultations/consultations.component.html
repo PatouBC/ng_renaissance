@@ -1,0 +1,103 @@
+<div fxLayout="row">
+    <div class="col p-0 entete">
+        <div class="col-3 p-0 text-center logo"></div>
+    </div>
+</div>
+<div class="titleBand" fxLayoutAlign="center center ">
+    <div class="pageTitle">Consultations</div>
+</div>
+<div class="containerConsult">
+    <h4>Horaires</h4>
+    <mat-divider></mat-divider>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+        <img src="../../../assets/images/cabinet.jpg" width="400px" style="margin: 30px">
+        <div class="description ">
+            <p>Les consultations se déroulent :</p>
+            <ul>
+                <li>de 09h00 à 11h00</li>
+                <li>de 11h00 à 13h00</li>
+                <li>de 14h00 à 16h00</li>
+                <li>de 16h00 à 18h00</li>
+            </ul>
+            <p>Les <strong>mercredis et samedis</strong> hors vacances scolaires</p>
+            <p>Du <strong>lundi au samedi</strong> pendant les vacances scolaires</p>
+        </div>
+        <div fxLayoutAlign="center center" id="connectButton">
+            <button mat-flat-button
+                    color="primary"
+                    routerLink="/registration">
+                Prendre rendez-vous en ligne
+            </button>
+        </div>
+
+    </div>
+    <h4>Tarifs</h4>
+    <mat-divider></mat-divider>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between" fxLayoutAlign.lt-lg="center">
+        <div fxLayout="column">
+
+            <div class="subtitle">
+                <h6>Consultations en cabinet</h6>
+                <mat-divider style="width: 190px"></mat-divider>
+            </div>
+            <div class="consult">
+                <ul>
+                    <li>consultation simple :
+                        <p>séance d'1h15 à 1h30 avec entretien et confection
+                            de 1 à 2 flacons personnalisés : <b>45 €</b></p>
+                    </li>
+                    <ul>
+                        <li>Fleurs de Bach</li>
+                        <li>Fleurs du Bush Australien</li>
+                        <li>Elixirs de cristaux</li>
+                    </ul>
+                    <br/>
+                    <li>consultation avec soin Reiki :
+                        <p>séance de 2h00 avec entretien, soin énergétique (reiki) et
+                            confection de 1 à 2 flacons personalisés : <b>60 €</b></p>
+                    </li>
+                    <ul>
+                        <li>Fleurs de Bach</li>
+                        <li>Fleurs du Bush Australien</li>
+                        <li>Elixirs de cristaux</li>
+                    </ul>
+                </ul>
+            </div>
+
+            <div class="subtitle">
+                <h6>Consultations par téléphone ( 06.84.32.47.95 ) ou mail</h6>
+                <mat-divider style="width: 400px"></mat-divider>
+            </div>
+            <div class="consult">
+                <ul>
+                    <li>Entretien, confection et envoi des flacons personnalisés par voie postale
+                        sous enveloppe "bulle" : <b>45 €</b></li>
+                    <li>Règlement par chèque</li>
+                </ul>
+            </div>
+            <div class="subtitle">
+                <h6>Consultations à votre domicile (cas exceptionnels)</h6>
+                <mat-divider style="width: 370px"></mat-divider>
+            </div>
+            <div class="consult">
+                <ul>
+                    <li>Entretien élixirs floraux et flacons personnalisés : <b>60 €</b></li>
+                </ul>
+            </div>
+            <div class="subtitle">
+                <h6>Pour plus de renseignements :</h6>
+                <mat-divider style="width: 240px"></mat-divider>
+            </div>
+            <div class="consult">
+                <ul>
+                    <li>vous pouvez me contacter par téléphone au : <b>06.84.32.47.95</b></li>
+                    <li>ou m'envoyer un message gràce au formulaire ci-contre :</li>
+                </ul>
+            </div>
+        </div>
+        <app-email></app-email>
+    </div>
+</div>
+
+<app-cookie></app-cookie>
+

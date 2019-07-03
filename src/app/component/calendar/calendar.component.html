@@ -1,0 +1,78 @@
+<div fxLayout="row" fxLayoutAlign="center center" id="rdv">
+    <ng-container *ngIf="!rdvconfirmed">
+        <mat-card>
+            <mat-card-title class="text-center">Choisissez un rendez-vous</mat-card-title>
+            <mat-card-content>
+                <form fxLayout="column" [formGroup]="calendarForm">
+                    <mat-form-field>
+                        <mat-label>Selectionner une date</mat-label>
+                        <mat-select formControlName="day"
+                                    required
+                                    (selectionChange)="createDaypartSelector($event)">
+                            <ng-container *ngFor="let workingDay of workingDays">
+                                <mat-option *ngIf="workingDay.available"
+                                            [value]="workingDay">
+                                    {{ workingDay.date }}
+                                </mat-option>
+                            </ng-container>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="workingDay">
+                        <mat-label>Selectionner un créneau horaire</mat-label>
+                        <mat-select formControlName="daypart"
+                                    required
+                                    (selectionChange)="selectDaypart($event)">
+                            <ng-container *ngFor="let daypart of workingDay.dayparts">
+                                <mat-option *ngIf="daypart.status.value ==0"
+                                            [value]="daypart">
+                                    {{ daypart.type.definition }}
+                                </mat-option>
+                            </ng-container>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="workingDay && selectedDaypart">
+                        <mat-label>Selectionner un type de consultation</mat-label>
+                        <mat-select formControlName="consult"
+                                    required
+                                    (selectionChange)="selectConsult($event)">
+                            <mat-option *ngFor="let consult of consults"
+                                        [value]="consult">
+                                {{ consult.description }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <ngb-alert type="success"
+                               *ngIf="workingDay && selectedDaypart && consult"
+                               [dismissible]="false">
+                        Confirmer la prise de RDV ?
+                    </ngb-alert>
+                    <button class="mt-3" mat-flat-button
+                            [disabled]="calendarForm.invalid"
+                            (click)="rdv()"
+                            color="primary">
+                        <span>Envoyer</span>
+                    </button>
+                    <button class="mt-3" mat-flat-button
+                            *ngIf="calendarForm.valid"
+                            (click)="undo()"
+                            color="secondary">
+                        <span>Annuler</span>
+                    </button>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+    <ng-container *ngIf="rdvconfirmed" >
+        <div fxLayout="column">
+            <div>Votre demande de rendez-vous a bien été prise en compte</div>
+            <div>Vous retrouvrerez la confirmation de votre rendez-vous dans votre espace personnel</div>
+            <div>Sans réponse dans les 48h, ou 24h avant le rendez-vous, merci de me contacter par téléphone</div>
+        </div>
+    </ng-container>
+</div>
+
+
+

@@ -1,0 +1,69 @@
+.remaining-space{
+   flex: 1 1 auto;
+}
+mat-sidenav{
+   min-width: 300px;
+   background-color: white;
+}
+
+.example-container {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+ }
+ nav mat-nav-list a.active{
+   background: #707070;
+   color:white;
+}
+button.active{
+   background: #707070;
+   color:white;
+}
+
+mat-toolbar{
+   background-color: white;
+   color: #929292;
+   border-bottom-style: solid;
+   border-color: #f3f3f3;
+}
+.sidenav-submenu{
+   margin-left: 80px;
+}
+.subCat{
+   border-bottom-style: ridge;
+   border-color: #f3f3f3;
+}
+::ng-deep .container-fluid{
+   padding:0;
+   margin: 0;
+}
+.facebook{
+   width: 40px;
+   height: 40px;
+}
+footer{
+   background-color: #707070;
+   color: white;
+   font-size: 0.75em;
+   padding: 10px;
+
+}
+.copyright{
+   width: 20px;
+   height: 20px;
+}
+.logoFooter{
+   width: 70px;
+   height: 70px;
+   border-radius: 35px;
+   background-color: #ffff;
+}
+footer a:link{
+   text-decoration: none!important;
+   color: white;
+}
+.underFooter{
+   margin: 15px;
+}

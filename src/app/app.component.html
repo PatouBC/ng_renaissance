@@ -1,0 +1,117 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened">
+    <mat-toolbar  role="heading">
+      <span><img src="../assets/images/fleur70.png" width="50px"></span>
+      <span class="remaining-space"></span>
+      <button mat-button (click)="sidenav.close()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-toolbar>
+    <nav>
+      <mat-nav-list>
+        <a routerLink="/home" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
+          <mat-icon matListIcon>local_florist</mat-icon>
+          <span>Accueil</span>
+        </a>
+        <a mat-list-item (click)="toggleMenu()">
+          <mat-icon matListIcon>local_florist</mat-icon>
+          <span>Fleurs et Elixirs</span>
+          <mat-icon *ngIf="!showMenu">chevron_right</mat-icon>
+          <mat-icon *ngIf="showMenu">expand_more</mat-icon>
+        </a>
+        <mat-nav-list class="sidenav-submenu" *ngIf="showMenu" >
+          <a *ngFor="let category of categories"
+             class="subCat" mat-list-item
+             routerLink="/product/{{ category.id }}"
+             routerLinkActive="active"
+             (click)="sidenav.close()">
+            <span>{{ category.title}}</span>
+          </a>
+
+        </mat-nav-list>
+        <a routerLink="/soins" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
+          <mat-icon matListIcon>local_florist</mat-icon>
+          <span>Soins énergétiques</span>
+        </a>
+        <a routerLink="/ateliers" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
+          <mat-icon matListIcon>local_florist</mat-icon>
+          <span>Ateliers</span>
+        </a>
+        <a routerLink="/consultations" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
+          <mat-icon matListIcon>local_florist</mat-icon>
+          <span>Consultations</span>
+        </a>
+
+       </mat-nav-list>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <mat-toolbar  role="heading">
+      <span>
+        <button mat-button (click)="sidenav.toggle()">
+          <mat-icon>view_headline</mat-icon>
+        </button>
+      </span>
+      <span class="remaining-space"></span>
+      <span *ngIf="!isConnected()">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon class="material-icons-outlined">account_box</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/registration" routerLinkActive="active">
+            <mat-icon class="material-icons-outlined">account_box</mat-icon>
+            <span>Se Connecter</span>
+          </button>
+        </mat-menu>
+        <span>Non connecté</span>
+      </span>
+      <span *ngIf="isConnected()">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon class="material-icons">account_box</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button routerLink="/perso" routerLinkActive="active" mat-menu-item (click)="sidenav.close()">
+            <mat-icon class="material-icons">account_box</mat-icon>
+            <span>Espace personnel</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon class="material-icons">close</mat-icon>
+            <span>Se Déconnecter</span>
+          </button>
+        </mat-menu>
+        <span>{{ user?.username }} </span>
+      </span>
+    </mat-toolbar>
+    <div class="container-fluid p-0">
+
+      <router-outlet></router-outlet>
+    </div>
+    <footer class="footer" fxLayout="row wrap" fxLayoutAlign="space-around center">
+      <div>
+        <img class="logoFooter underFooter" src="../assets/images/fleur70.png" alt="'logo de Claire Body-sauvage - renaissance Lugos Valérie Perez"/>
+      </div>
+      <div class="underFooter">
+        <p>Où nous trouver :</p>
+        <p>Renaissance- Valérie Perez</p>
+        <p>4 impasse de la gemme - 33830 Lugos</p>
+      </div>
+      <div class="underFooter">
+        <p>Contact :</p>
+        <p>06-84-32-47-95</p>
+        <a href="mailto: perez-valerie@live.fr">
+          <p class="mail">perez-valerie@live.fr</p>
+        </a>
+      </div>
+      <a href="https://www.facebook.com/Re-Naissance-Fleurs-de-Bach-1660614733989068/" class="underFooter">
+        <img class="facebook" src="../assets/images/Facebook%20New_48px.png" alt="logo facebook"/>
+      </a>
+      <div fxlayout="row" class="underFooter">
+        <img class="copyright" src="../assets/images/copyright_50px.png" alt="copyright"/>
+        <p>Patricia Bergez - 2019</p>
+      </div>
+    </footer>
+  </mat-sidenav-content>
+
+
+
+</mat-sidenav-container>

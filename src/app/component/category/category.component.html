@@ -1,0 +1,11 @@
+
+<div >
+  <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
+  <div class="titleBand" fxLayoutAlign="center center ">
+    <div class="pageTitle">{{ category?.title}}</div>
+  </div>
+  <div fxLayout="row" class="descript">
+    <div [innerHTML]="category?.description | html" ></div>
+  </div>
+</div>
+

@@ -1,0 +1,67 @@
+
+  <div fxLayout="row" fxLayoutAlign="center center" style="height: calc(100vh - 64px);">
+    <mat-card *ngIf="!emailSent" style="width: 400px;">
+      <mat-card-title class="text-center">Envoyer un message</mat-card-title>
+      <mat-card-content>
+        <form fxLayout="column" [formGroup]="emailForm">
+          <mat-form-field>
+            <input matInput
+                   type="text"
+                   placeholder="Nom"
+                   formControlName="name"
+                   autocomplete="off" required/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   type="text"
+                   placeholder="Prénom"
+                   formControlName="firstname"
+                   autocomplete="off" required/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   type="email"
+                   placeholder="email"
+                   formControlName="address"
+                   autocomplete="off" required/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text"
+                   placeholder="Objet"
+                   formControlName="object"
+                   autocomplete="Off" required/>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="10"
+                      cdkAutosizeMaxRows="50"
+                      placeholder="Message"
+                      formControlName="message"
+                      autocomplete="Off" required>
+            </textarea>
+          </mat-form-field>
+          <mat-checkbox *ngIf="!rgpd" formControlName="rgpd">
+            <span id="rgpd">J'accepte <a routerLink="/confidential">la politique de confidentialité</a></span>
+          </mat-checkbox>
+          <button class="mt-3" mat-flat-button
+                  [disabled]="loading || emailForm.invalid"
+                  (click)="createEmail()"
+                  color="primary">
+            <span>Envoyer</span>
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="emailSent" style="width: 400px">
+      <mat-card-title class="text-center">Message envoyé</mat-card-title>
+      <mat-card-content>
+        Vous recevrez une réponse par mail dans les 48 heures.
+        Pour tout besoin urgent, n'hésitez pas à me contacter par téléphone !
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+

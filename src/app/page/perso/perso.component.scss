@@ -1,0 +1,34 @@
+.container-fluid{
+  min-height: 80vh;
+}
+.infoRdv{
+  width: 100%;
+  margin: 15px;
+}
+.infoPerso{
+  margin: 15px;
+}
+
+.vignettes{
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  color: white;
+}
+#vignette1{
+  background-image: url("../../../assets/images/fleurs_460.jpg");
+  background-size: contain;
+}
+#vignette2{
+  background-image: url("../../../assets/images/accueil3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#vignette3{
+  background-image: url("../../../assets/images/accueil2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.butText{
+  font-size: 20px;
+}

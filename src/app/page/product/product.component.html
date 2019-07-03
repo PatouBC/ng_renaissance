@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div fxLayout="row">
+        <div class="col p-0 entete">
+            <div class="col-3 p-0 text-center logo"></div>
+        </div>
+    </div>
+    <div>
+        <app-category></app-category>
+    </div>
+    <div class="descript">
+        <div fxLayoutAlign="center center " style="width: 100%">
+            <mat-spinner *ngIf="loading" [diameter]="25" ></mat-spinner>
+        </div >
+        <div *ngIf="indications?.length > 1" fxLayoutAlign="center center">
+            <mat-form-field>
+                <mat-label> Tri par émotion</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let indication of indications"
+                                routerLink="/product/indication/{{ indication.id }}"
+                                [value]="indication.description">
+                        {{ indication.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayoutAlign="end center">
+            <ngb-pagination *ngIf="products?.length > 12"
+                            [collectionSize]="products?.length"
+                            [(page)]="page"
+                            size="sm">
+            </ngb-pagination>
+        </div>
+        <div class="listing">
+            <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+                <div *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <div class="thumbnail">
+                        <app-image
+                                [imgPath]="product.image.imgpath"
+                                [alt]="product.image.alt"
+                                routerLink="/product/detail/{{product.id}}">
+                        </app-image>
+                        <div class="imgTitle">{{ product.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ngb-pagination *ngIf="products?.length > 12"
+                        [collectionSize]="products?.length"
+                        [(page)]="page"
+                        size="sm"
+                        class="d-flex justify-content-end bottomlist">
+        </ngb-pagination>
+    </div>
+</div>
+<app-cookie></app-cookie>

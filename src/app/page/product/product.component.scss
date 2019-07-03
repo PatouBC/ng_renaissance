@@ -1,0 +1,46 @@
+.logo{
+  background-image: url("../../../assets/images/logo300-re-naissance-claire-body.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 25vw;
+}
+.entete{
+  background-image: url("../../../assets/images/wallhaven.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+}
+.container-fluid{
+  min-height: 80vh;
+}
+::ng-deep .page-item.active .page-link {
+  background-color: #707070;
+  border-color: #707070;
+}
+::ng-deep .page-link {
+  color: #707070;
+}
+.imgTitle {
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+  border-style: groove;
+  font-size: 20px;
+}
+.listing {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.descript{
+  padding :0px 40px 40px 40px;
+}
+.bottomlist{
+  padding-top: 50px;
+}
+.thumbnail{
+  cursor: pointer;
+}
+app-image:focus{
+  outline: 0;
+}
+

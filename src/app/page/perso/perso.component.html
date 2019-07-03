@@ -1,0 +1,85 @@
+<div class="container-fluid" fxLayout="row wrap" fxLayoutAlign="space-around ">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around " style="width: 100%">
+        <div class="vignettes" id="vignette1" fxLayoutAlign="center center">
+            <button class="butText" mat-button (click)="toggleInfo()">Mes informations personnelles</button>
+        </div>
+        <div class="vignettes" id="vignette2" fxLayoutAlign="center center">
+            <button class="butText" mat-button (click)="toggleRdv()">Mes rendez-vous</button>
+        </div>
+        <div class="vignettes" id="vignette3" fxLayoutAlign="center center">
+            <button class="butText" mat-button (click)="toggleMessage()">Mes messages</button>
+        </div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around " style="width: 100%">
+        <div class="infoPerso" *ngIf="showInfo">
+            <app-profile></app-profile>
+        </div>
+        <div class="infoRdv" *ngIf="showRdv" fxLayout="row" fxLayoutAlign="space-around center ">
+            <div *ngIf="showRdv"
+                 fxLayout="row"
+                 fxLayoutAlign="space-around center">
+                <div>
+                    <h4>Mes rendez-vous</h4>
+                    <ng-container *ngIf="dayparts?.length > 0 ">
+                        <table class="table table-responsive">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Heure</th>
+                                <th scope="col">Statut</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let daypart of dayparts">
+                                <td class="rdvItems">{{ daypart.workingDay.daydate }}/
+                                    {{ daypart.workingDay.daymonth }}/
+                                    {{ daypart.workingDay.dayyear }}</td>
+                                <td class="rdvItems">{{ daypart.type.definition }}</td>
+                                <td class="rdvItems">{{ (daypart.status.value == 20) ? 'confirmé' : 'en attente' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                    <ng-container *ngIf="dayparts?.length == 0 ">
+                        <h5>Vous n'avez aucun rendez-vous dans votre liste</h5>
+                    </ng-container>
+                </div>
+            </div>
+            <app-calendar></app-calendar>
+        </div>
+        <div class="infoMessage"
+             *ngIf="showMessage"
+             fxLayout="row wrap"
+             fxLayoutAlign="space-around center"
+             style="width: 100%">
+            <div>
+                <ng-container *ngIf="emails?.length > 0 ">
+                <h4>Mes messages</h4>
+                <table class="table table-responsive">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Objet</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Statut</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let email of emails">
+                        <td>{{ email.object }}</td>
+                        <td>{{ email.message }}</td>
+                        <td *ngIf="email.treated === true">Traité</td>
+                        <td *ngIf="email.treated === false">En attente</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </ng-container>
+                <ng-container *ngIf="emails?.length == 0 ">
+                    <h5>Vous n'avez aucun message dans votre liste</h5>
+                </ng-container>
+            </div>
+            <app-email></app-email>
+        </div>
+
+    </div>
+
+</div>

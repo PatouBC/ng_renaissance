@@ -1,0 +1,6 @@
+<div class="my-img-cmp">
+  <mat-spinner *ngIf="!imgLoaded"></mat-spinner>
+  <img [src]="src" (load)="onImageLoad()"
+       [className]="imgLoaded ? 'display-img' : 'hide-img'"
+       [alt]="alt"/>
+</div>
