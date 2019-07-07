@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" id="rdv">
     <ng-container *ngIf="!rdvconfirmed">
         <mat-card>
-            <mat-card-title class="text-center">Choisissez un rendez-vous</mat-card-title>
+            <mat-card-title class="text-center">Nouveau rendez-vous</mat-card-title>
             <mat-card-content>
                 <form fxLayout="column" [formGroup]="calendarForm">
                     <mat-form-field>
@@ -66,11 +66,18 @@
         </mat-card>
     </ng-container>
     <ng-container *ngIf="rdvconfirmed" >
-        <div fxLayout="column">
-            <div>Votre demande de rendez-vous a bien été prise en compte</div>
-            <div>Vous retrouvrerez la confirmation de votre rendez-vous dans votre espace personnel</div>
-            <div>Sans réponse dans les 48h, ou 24h avant le rendez-vous, merci de me contacter par téléphone</div>
-        </div>
+        <mat-card fxLayout="column" fxLayoutAlign="center">
+            <mat-card-content>
+                <div>Votre demande de rendez-vous a bien été prise en compte</div>
+                <div>Vous retrouvrerez la confirmation de votre rendez-vous
+                    dans votre espace personnel</div>
+                <div>Sans réponse dans les 48h, ou 24h avant le rendez-vous,
+                    merci de me contacter par téléphone : 06-84-32-47-95</div>
+            </mat-card-content>
+            <mat-card-actions >
+                <button mat-flat-button color="primary" (click)="refresh()">Fermer</button>
+            </mat-card-actions>
+        </mat-card>
     </ng-container>
 </div>
 

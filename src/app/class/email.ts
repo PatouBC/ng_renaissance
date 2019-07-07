@@ -10,5 +10,7 @@ export class Email {
     treated: boolean;
     user: User;
     rgpd: boolean;
+    createdAt: number;
+    updatedAt: number;
 
 }

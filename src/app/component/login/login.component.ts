@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
     if (val.username && val.password) {
       this.auth.login(val.username, val.password)
           .subscribe(() => {
-            this.loading = false;
             this.auth.profile()
             .subscribe(
                 (user) => {
-                  this.router.navigate(['/perso']);
+                    this.loading = false;
+                    this.router.navigate(['/perso']);
                 },
                 (err) => {
                   console.error(err);
@@ -46,9 +46,14 @@ export class LoginComponent implements OnInit {
               (err) => {
                 console.error(err);
                 this.connexionFailed = true;
+                this.loading = false;
                 this.router.navigate(['/registration']);
               });
     }
   }
-
+    refresh() {
+        this.connexionFailed = false;
+        this.loading = false;
+        this.ngOnInit();
+    }
 }

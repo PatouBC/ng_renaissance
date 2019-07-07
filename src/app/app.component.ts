@@ -21,8 +21,7 @@ export class AppComponent implements OnInit {
 
   constructor(private titleService: TitleService,
               private auth: AuthService,
-              private catServ: CategoryService,
-              private router: Router) {}
+              private catServ: CategoryService) {}
 
   toggleMenu() {
     this.showMenu = !this.showMenu;

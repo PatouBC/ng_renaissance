@@ -87,4 +87,8 @@ export class CalendarComponent implements OnInit {
   undo() {
     this.ngOnInit();
   }
+  refresh() {
+    this.ngOnInit();
+    this.rdvconfirmed = false;
+  }
 }

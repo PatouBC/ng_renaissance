@@ -14,6 +14,7 @@ export class EmailComponent implements OnInit {
 
   emailSent: boolean;
   emailFailed: boolean;
+  loading: boolean;
   email: Email;
   user: User;
   emailForm: FormGroup;
@@ -23,6 +24,7 @@ export class EmailComponent implements OnInit {
               private auth: AuthService) { }
 
   ngOnInit() {
+    this.loading = false;
     this.user = this.auth.currentUser;
     if (this.user) {
       this.rgpd = true;
@@ -58,12 +60,18 @@ export class EmailComponent implements OnInit {
     });
   }
   createEmail() {
+    this.loading = true;
     const val = this.emailForm.value;
     this.emailService.createEmail(val).subscribe(() => {
       this.emailSent = true;
+      this.loading = false;
     }, () => {
       this.emailFailed = true;
     });
 
+  }
+  refresh() {
+    this.ngOnInit();
+    this.emailSent = false;
   }
 }

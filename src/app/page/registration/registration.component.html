@@ -4,10 +4,11 @@
      fxLayout.lt-md="column">
     <app-login></app-login>
     <mat-card *ngIf="!registrationDone">
-        <ngb-alert type="danger" *ngIf="registerFailed" (close)="registerFailed = false">
+        <ngb-alert type="danger" *ngIf="registerFailed"
+                   (close)="registerFailed = false">
             Une erreur est survenue, veuillez consulter l'administrateur du site
         </ngb-alert>
-        <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
+        <mat-spinner *ngIf="loading " [diameter]="20"></mat-spinner>
         <mat-card-title class="text-center">Créer un compte</mat-card-title>
         <mat-card-content>
             <form class="form-content" [formGroup]="registerForm">

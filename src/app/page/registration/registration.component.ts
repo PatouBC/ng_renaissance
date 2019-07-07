@@ -46,6 +46,7 @@ export class RegistrationComponent implements OnInit {
             this.registrationDone = true;
         }, () => {
             this.registerFailed = true;
+
         });
     }
 

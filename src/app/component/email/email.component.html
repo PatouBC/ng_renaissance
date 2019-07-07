@@ -1,8 +1,9 @@
 
-  <div fxLayout="row" fxLayoutAlign="center center" style="height: calc(100vh - 64px);">
-    <mat-card *ngIf="!emailSent" style="width: 400px;">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card *ngIf="!emailSent" style="width: 400px;" >
+      <mat-spinner *ngIf="loading" [diameter]="25" ></mat-spinner>
       <mat-card-title class="text-center">Envoyer un message</mat-card-title>
-      <mat-card-content>
+      <mat-card-content >
         <form fxLayout="column" [formGroup]="emailForm">
           <mat-form-field>
             <input matInput
@@ -58,8 +59,11 @@
       <mat-card-title class="text-center">Message envoyé</mat-card-title>
       <mat-card-content>
         Vous recevrez une réponse par mail dans les 48 heures.
-        Pour tout besoin urgent, n'hésitez pas à me contacter par téléphone !
+        Pour tout besoin urgent, n'hésitez pas à me contacter par téléphone : : 06-84-32-47-95 !
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" (click)="refresh()">Fermer</button>
+      </mat-card-actions>
     </mat-card>
   </div>
 

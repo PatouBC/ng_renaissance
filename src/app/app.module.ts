@@ -11,6 +11,7 @@ import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule,
          MatCardModule, MatFormFieldModule, MatInputModule, MatGridListModule,
          MatProgressSpinnerModule, MatTableModule, MatSelectModule,
          MatAutocompleteModule } from '@angular/material';
+import { CdkTableModule} from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ImagepathPipe } from './pipe/imagepath.pipe';
@@ -89,29 +90,28 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    ProductComponent,
-    LoginComponent,
-    HomeComponent,
-    SoinsComponent,
-    AteliersComponent,
-    ConsultationsComponent,
-    CategoryComponent,
-    IndicationComponent,
-    ImagepathPipe,
-    RegistrationComponent,
     ActuComponent,
+    AppComponent,
+    AteliersComponent,
+    CalendarComponent,
+    CategoryComponent,
+    ConfidentialComponent,
+    ConsultationsComponent,
+    CookieComponent,
+    EmailComponent,
+    HomeComponent,
     HtmlPipe,
     ImageComponent,
-    ProductDetailComponent,
-    CalendarComponent,
-    ProfileComponent,
+    ImagepathPipe,
+    IndicationComponent,
+    LoginComponent,
     PersoComponent,
+    ProductComponent,
+    ProductDetailComponent,
     ProductIndicationComponent,
-    EmailComponent,
-    CookieComponent,
-    ConfidentialComponent
+    ProfileComponent,
+    RegistrationComponent,
+    SoinsComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +119,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    CdkTableModule,
+    FlexLayoutModule,
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -136,7 +138,6 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatAutocompleteModule,
     NgbModule,
-    FlexLayoutModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

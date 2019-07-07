@@ -20,6 +20,11 @@ export class PersoComponent implements OnInit {
   showInfo: boolean;
   showRdv: boolean;
   showMessage: boolean;
+  displayedColumns: string[] = ['date', 'type', 'status'];
+
+  loading: boolean;
+  loading2: boolean;
+
   constructor(private router: Router,
               private emailService: EmailService,
               private auth: AuthService,
@@ -29,6 +34,8 @@ export class PersoComponent implements OnInit {
     this.user = this.auth.currentUser;
     this.getMessages(this.user.id);
     this.getRdv(this.user.id);
+    this.loading = true;
+    this.loading2 = true;
   }
 
   toggleInfo() {
@@ -38,26 +45,39 @@ export class PersoComponent implements OnInit {
   }
   toggleRdv() {
     this.showRdv = !this.showRdv;
+    this.getRdv(this.user.id);
     this.showInfo = false;
     this.showMessage = false;
   }
   toggleMessage() {
     this.showMessage = !this.showMessage;
+    this.getMessages(this.user.id);
     this.showRdv = false;
     this.showInfo = false;
   }
 
   getMessages(userId: number) {
     this.emailService.getEmailsByUser(userId).subscribe((emails: Email[]) => {
+      this.loading2 = false;
       this.emails = emails;
     });
   }
 
   getRdv(userId: number) {
     this.calendar.getRdv(userId).subscribe((dayparts: Daypart[]) => {
+      this.loading = false;
       this.dayparts = dayparts;
 
     });
   }
 
+  refreshRdv(){
+    this.showRdv = true;
+    this.ngOnInit();
+  }
+
+  refreshMessage() {
+    this.showMessage = true;
+    this.ngOnInit();
+  }
 }
