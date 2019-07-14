@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ProductService} from '../../../service/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../../../class/product';
 import { Location} from '@angular/common';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,25 +14,28 @@ export class ProductDetailComponent implements OnInit {
 
   product: Product;
   loading: boolean;
+  id: number;
 
   constructor(private prodServ: ProductService,
               private activatedRoute: ActivatedRoute,
-              private location: Location) { }
+              private location: Location,
+              private dialogRef: MatDialogRef<ProductDetailComponent>,
+              @Inject(MAT_DIALOG_DATA) data) {
+                this.id = data.id;
+  }
 
   ngOnInit() {
       this.loading = true;
-      this.activatedRoute.params
-        .subscribe((params) => {
-          this.prodServ.getProductById(params.id)
-              .subscribe((product: Product) => {
-                this.product = product;
-                this.loading = false;
-              });
-        });
+      this.prodServ.getProductById(this.id)
+          .subscribe((product: Product) => {
+            this.product = product;
+            this.loading = false;
+          });
+
   }
 
-    backClicked() {
-        this.location.back();
+    close() {
+      this.dialogRef.close();
     }
 
 }

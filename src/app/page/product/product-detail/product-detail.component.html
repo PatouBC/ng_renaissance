@@ -1,33 +1,25 @@
-<div class="container-fluid">
-    <div fxLayout="row">
-        <div class="col p-0 entete">
-            <div class="col-3 p-0 text-center logo"></div>
-        </div>
-    </div>
-    <div fxLayoutAlign="center center " class="pageTitle titleBand">
-        <div>{{ product?.category.title }}</div>
-    </div>
-    <button class="btn btn-sm " mat-flat-button (click)="backClicked()">
-        <mat-icon class="material-icons arrow">arrow_back</mat-icon>
-        <span class="back">Retour vers la page précédente</span>
-    </button>
-    <div fxLayoutAlign="center center " style="width: 100%">
-        <mat-spinner *ngIf="loading" [diameter]="25" ></mat-spinner>
-    </div >
-    <div class="descript" *ngIf="product" fxLayout="row" fxLayoutAlign="center center ">
+<mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
+
+<mat-dialog-content>
+    <div class="descript" *ngIf="product" fxLayout="row wrap" fxLayoutAlign="center center ">
         <app-image
                 [imgPath]="product.image.imgpath"
                 [alt]="product.image.alt"
                 routerLink="/product/detail/{{product.id}}">
         </app-image>
-        <div >
-            <div class="prodTitle">{{ product.name}}</div>
+        <div>
+            <div class="prodTitle">{{ product?.category.title }} : {{ product.name}}</div>
             <h6>Etat émotionnel :</h6>
-            <div [innerHTML]="product.state | html" ></div>
+            <div [innerHTML]="product.state | html" class="texte"></div>
             <h6>Effets positifs :</h6>
-            <div [innerHTML]="product.effect | html"></div>
+            <div [innerHTML]="product.effect | html" class="texte"></div>
         </div>
 
     </div>
-</div>
-<app-cookie></app-cookie>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="center center">
+    <button mat-flat-button (click)="close()">Fermer</button>
+</mat-dialog-actions>
+
+
+

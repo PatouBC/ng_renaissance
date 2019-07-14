@@ -5,6 +5,8 @@ import {IndicationService} from '../../../service/indication.service';
 import {Indication} from '../../../class/indication';
 import {ProductService} from '../../../service/product.service';
 import { Location} from '@angular/common';
+import { MatDialog, MatDialogConfig} from '@angular/material';
+import {ProductDetailComponent} from '../product-detail/product-detail.component';
 
 
 @Component({
@@ -23,7 +25,8 @@ export class ProductIndicationComponent implements OnInit {
                 private activatedRoute: ActivatedRoute,
                 private indicServ: IndicationService,
                 private prodServ: ProductService,
-                private location: Location ) {
+                private location: Location,
+                private dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -45,6 +48,21 @@ export class ProductIndicationComponent implements OnInit {
     }
     backClicked() {
         this.location.back();
+    }
+
+    openDialog(id?: any) {
+
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.data = {
+            id
+        };
+
+        this.dialog.open(ProductDetailComponent, dialogConfig);
     }
 
 }

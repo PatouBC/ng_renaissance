@@ -19,10 +19,10 @@
             <div fxLayout="row wrap" fxLayoutAlign="center center">
                 <div *ngFor="let product of products">
                     <div *ngFor="let indication of product.indications">
-                        <div *ngIf="indication.description === val" class="vignette">
+                        <div *ngIf="indication.description === val" class="vignette"
+                                (click)="openDialog(product.id)">
                             <app-image
-                                    [imgPath]="product.image.imgpath"
-                                    routerLink="/product/detail/{{product.id}}">
+                                    [imgPath]="product.image.imgpath">
                             </app-image>
                             <div class="imgTitle">{{ product.name}}</div>
                         </div>

@@ -33,11 +33,10 @@
         <div class="listing">
             <div fxLayout="row wrap" fxLayoutAlign="space-around center">
                 <div *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-                    <div class="thumbnail">
+                    <div class="thumbnail" (click)="openDialog(product.id)">
                         <app-image
                                 [imgPath]="product.image.imgpath"
-                                [alt]="product.image.alt"
-                                routerLink="/product/detail/{{product.id}}">
+                                [alt]="product.image.alt">
                         </app-image>
                         <div class="imgTitle">{{ product.name}}</div>
                     </div>

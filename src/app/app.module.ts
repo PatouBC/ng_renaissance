@@ -10,7 +10,7 @@ import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule,
          MatButtonModule, MatExpansionModule, MatListModule, MatMenuModule,
          MatCardModule, MatFormFieldModule, MatInputModule, MatGridListModule,
          MatProgressSpinnerModule, MatTableModule, MatSelectModule,
-         MatAutocompleteModule } from '@angular/material';
+         MatAutocompleteModule, MatDialogModule } from '@angular/material';
 import { CdkTableModule} from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -121,22 +121,23 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     CdkTableModule,
     FlexLayoutModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatListModule,
-    MatExpansionModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatMenuModule,
-    MatCardModule,
-    MatGridListModule,
-    MatProgressSpinnerModule,
-    MatTableModule,
-    MatSelectModule,
     MatAutocompleteModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatToolbarModule,
     NgbModule,
     RouterModule.forRoot(appRoutes)
   ],
@@ -145,6 +146,7 @@ const appRoutes: Routes = [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
       CookieService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ProductDetailComponent]
 })
 export class AppModule { }

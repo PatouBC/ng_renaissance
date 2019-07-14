@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryService} from '../../service/category.service';
 import {ProductService} from '../../service/product.service';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog, MatDialogConfig} from '@angular/material';
+import {ProductDetailComponent} from './product-detail/product-detail.component';
 
 
 @Component({
@@ -29,7 +31,8 @@ export class ProductComponent implements OnInit {
     constructor(private router: Router,
                 private catServ: CategoryService,
                 private activatedRoute: ActivatedRoute,
-                private prodServ: ProductService) {
+                private prodServ: ProductService,
+                private dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -68,5 +71,18 @@ export class ProductComponent implements OnInit {
         });
     }
 
+    openDialog(id?: any) {
 
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.data = {
+            id
+        };
+
+        this.dialog.open(ProductDetailComponent, dialogConfig);
+    }
 }
