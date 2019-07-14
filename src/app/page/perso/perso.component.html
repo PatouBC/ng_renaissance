@@ -80,7 +80,6 @@
                             <th style="width: 95px">Date</th>
                             <th style="width: 20%">Objet</th>
                             <th style="width: 50%">Message</th>
-                            <th style="width: 10%">Statut</th>
                             <th style="width: 95px">Lu le</th>
                         </tr>
                         </thead>
@@ -93,10 +92,6 @@
                                 </th>
                                 <td>{{ email.object }}</td>
                                 <td>{{ email.message }}</td>
-                                <td>
-                                    <span *ngIf="email?.treated === true">Traité</span>
-                                    <span *ngIf="email?.treated === false">En attente</span>
-                                </td>
                                 <td >
                                     <span *ngIf="email.treated">
                                   {{ email.updatedAt.timestamp*1000 | date: 'dd/MM/yy'}}

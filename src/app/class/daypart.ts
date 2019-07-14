@@ -8,7 +8,7 @@ export class Daypart {
     id: number;
     status: Status;
     type: Type;
-    consults: Consult[];
+    consult: Consult;
     user: User;
     workingDay: Workingday[];
 }
