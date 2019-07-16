@@ -33,55 +33,27 @@
     </div>
     <h4>Tarifs</h4>
     <mat-divider></mat-divider>
-    <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutAlign.lt-lg="center">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutAlign.lt-md="center">
         <div fxLayout="column">
 
             <div class="subtitle">
-                <h6>Consultations en cabinet</h6>
+                <h6>Consultations :</h6>
                 <mat-divider style="width: 190px"></mat-divider>
             </div>
             <div class="consult">
                 <ul>
-                    <li>consultation simple :
-                        <p>séance d'1h15 à 1h30 avec entretien et confection
-                            de 1 à 2 flacons personnalisés : <b>45 €</b></p>
+                    <ng-container *ngFor="let consult of consults">
+                    <li><h6>{{ consult.tittle}} :</h6>
+                        <mat-divider style="width: 400px"></mat-divider>
+                        <p class="pres">{{ consult.description }} : <b>{{ consult.rate }} €</b></p>
                     </li>
                     <ul>
-                        <li>Fleurs de Bach</li>
-                        <li>Fleurs du Bush Australien</li>
-                        <li>Elixirs de cristaux</li>
+                        <ng-container *ngFor="let category of categories">
+                            <li>{{ category.title}}</li>
+                        </ng-container>
                     </ul>
                     <br/>
-                    <li>consultation avec soin Reiki :
-                        <p>séance de 2h00 avec entretien, soin énergétique (reiki) et
-                            confection de 1 à 2 flacons personalisés : <b>60 €</b></p>
-                    </li>
-                    <ul>
-                        <li>Fleurs de Bach</li>
-                        <li>Fleurs du Bush Australien</li>
-                        <li>Elixirs de cristaux</li>
-                    </ul>
-                </ul>
-            </div>
-
-            <div class="subtitle">
-                <h6>Consultations par téléphone ( 06.84.32.47.95 ) ou mail</h6>
-                <mat-divider style="width: 400px"></mat-divider>
-            </div>
-            <div class="consult">
-                <ul>
-                    <li>Entretien, confection et envoi des flacons personnalisés par voie postale
-                        sous enveloppe "bulle" : <b>45 €</b></li>
-                    <li>Règlement par chèque</li>
-                </ul>
-            </div>
-            <div class="subtitle">
-                <h6>Consultations à votre domicile (cas exceptionnels)</h6>
-                <mat-divider style="width: 370px"></mat-divider>
-            </div>
-            <div class="consult">
-                <ul>
-                    <li>Entretien élixirs floraux et flacons personnalisés : <b>60 €</b></li>
+                    </ng-container>
                 </ul>
             </div>
             <div class="subtitle">
@@ -91,7 +63,7 @@
             <div class="consult">
                 <ul>
                     <li>vous pouvez me contacter par téléphone au : <b>06.84.32.47.95</b></li>
-                    <li>ou m'envoyer un message gràce au formulaire ci-contre :</li>
+                    <li>ou m'envoyer un message gràce au formulaire ci-contre:</li>
                 </ul>
             </div>
         </div>

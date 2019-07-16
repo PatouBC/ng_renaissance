@@ -39,7 +39,7 @@
                                     (selectionChange)="selectConsult($event)">
                             <mat-option *ngFor="let consult of consults"
                                         [value]="consult">
-                                {{ consult.description }}
+                                {{ consult.tittle }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -54,10 +54,9 @@
                             color="primary">
                         <span>Envoyer</span>
                     </button>
-                    <button class="mt-3" mat-flat-button
+                    <button class="mt-3 annuler" mat-flat-button
                             *ngIf="calendarForm.valid"
-                            (click)="undo()"
-                            color="secondary">
+                            (click)="undo()">
                         <span>Annuler</span>
                     </button>
 
