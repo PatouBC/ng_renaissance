@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ConsultService} from '../../service/consult.service';
 import {CategoryService} from '../../service/category.service';
 import {Consult} from '../../class/consult';
-import {Category} from "../../class/category";
+import {Category} from '../../class/category';
 
 @Component({
   selector: 'app-consultations',
