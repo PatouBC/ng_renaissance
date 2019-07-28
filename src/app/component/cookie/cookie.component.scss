@@ -8,7 +8,9 @@
   border-top-style: solid;
   border-top-width: thick;
 }
-
+mat-card{
+  z-index: +2;
+}
 mat-card-actions{
   border-top-style: outset;
 }

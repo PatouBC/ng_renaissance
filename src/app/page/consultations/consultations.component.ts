@@ -3,6 +3,9 @@ import {ConsultService} from '../../service/consult.service';
 import {CategoryService} from '../../service/category.service';
 import {Consult} from '../../class/consult';
 import {Category} from '../../class/category';
+import {CalendarService} from '../../service/calendar.service';
+import {Workingday} from '../../class/workingday';
+import {Dayparttype} from '../../class/dayparttype';
 
 @Component({
   selector: 'app-consultations',
@@ -13,13 +16,16 @@ export class ConsultationsComponent implements OnInit {
 
   consults: Consult[];
   categories: Category[];
+  daytypes: Dayparttype[];
 
   constructor(private consultServ: ConsultService,
-              private catServ: CategoryService) { }
+              private catServ: CategoryService,
+              private calendarServ: CalendarService) { }
 
   ngOnInit() {
     this.getConsults();
     this.getCategories();
+    this.getDayPartType();
   }
  getConsults() {
     this.consultServ.getConsults()
@@ -33,5 +39,12 @@ export class ConsultationsComponent implements OnInit {
         .subscribe((categories: Category[]) => {
           this.categories = categories;
         });
+ }
+
+ getDayPartType() {
+     this.calendarServ.getDayparttypes()
+         .subscribe((dayparttypes: Dayparttype[]) => {
+             this.daytypes = dayparttypes;
+         });
  }
 }

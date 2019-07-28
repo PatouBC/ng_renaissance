@@ -72,13 +72,10 @@ export class ProductComponent implements OnInit {
     }
 
     openDialog(id?: any) {
-
-
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-
         dialogConfig.data = {
             id
         };

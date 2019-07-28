@@ -14,10 +14,10 @@
         <div class="description ">
             <p>Les consultations se déroulent :</p>
             <ul>
-                <li>de 09h00 à 11h00</li>
-                <li>de 11h00 à 13h00</li>
-                <li>de 14h00 à 16h00</li>
-                <li>de 16h00 à 18h00</li>
+                <ng-container *ngFor="let daytype of daytypes">
+                    <li>{{ daytype.definition }}</li>
+            </ng-container>
+
             </ul>
             <p>Les <strong>mercredis et samedis</strong> hors vacances scolaires</p>
             <p>Du <strong>lundi au samedi</strong> pendant les vacances scolaires</p>
@@ -29,7 +29,6 @@
                 Prendre rendez-vous en ligne
             </button>
         </div>
-
     </div>
     <h4>Tarifs</h4>
     <mat-divider></mat-divider>
