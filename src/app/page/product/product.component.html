@@ -13,7 +13,7 @@
         </div >
         <div *ngIf="indications?.length > 1" fxLayoutAlign="center center">
             <mat-form-field>
-                <mat-label> Tri par émotion</mat-label>
+                <mat-label> Tri par indication</mat-label>
                 <mat-select>
                     <mat-option *ngFor="let indication of indications"
                                 routerLink="/product/indication/{{ indication.id }}"

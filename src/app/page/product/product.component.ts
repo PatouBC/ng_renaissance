@@ -24,6 +24,7 @@ export class ProductComponent implements OnInit {
     indications: Indication[];
     loading: boolean;
 
+
     page = 1;
     pageSize = 10;
 

@@ -6,6 +6,8 @@ import {Category} from '../../class/category';
 import {CalendarService} from '../../service/calendar.service';
 import {Workingday} from '../../class/workingday';
 import {Dayparttype} from '../../class/dayparttype';
+import {AuthService} from "../../service/auth.service";
+import {User} from "../../class/user";
 
 @Component({
   selector: 'app-consultations',
@@ -15,36 +17,42 @@ import {Dayparttype} from '../../class/dayparttype';
 export class ConsultationsComponent implements OnInit {
 
   consults: Consult[];
+  user: User|null;
   categories: Category[];
   daytypes: Dayparttype[];
 
   constructor(private consultServ: ConsultService,
               private catServ: CategoryService,
-              private calendarServ: CalendarService) { }
+              private calendarServ: CalendarService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.getConsults();
     this.getCategories();
     this.getDayPartType();
   }
- getConsults() {
+    getConsults() {
     this.consultServ.getConsults()
         .subscribe((consults: Consult[]) => {
           this.consults = consults;
         });
- }
+    }
 
- getCategories() {
+    getCategories() {
     this.catServ.getCategories()
         .subscribe((categories: Category[]) => {
           this.categories = categories;
         });
- }
+    }
 
- getDayPartType() {
+    getDayPartType() {
      this.calendarServ.getDayparttypes()
          .subscribe((dayparttypes: Dayparttype[]) => {
              this.daytypes = dayparttypes;
          });
- }
+    }
+    isConnected(): boolean {
+        this.user = this.auth.currentUser;
+        return this.auth.isConnected();
+    }
 }

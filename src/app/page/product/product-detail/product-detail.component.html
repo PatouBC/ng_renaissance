@@ -9,8 +9,11 @@
         </app-image>
         <div>
             <div class="prodTitle">{{ product?.category.title }} : {{ product.name}}</div>
-            <h6>Etat émotionnel :</h6>
-            <div [innerHTML]="product.state | html" class="texte"></div>
+            <div *ngIf="product.state!== '<p>aucun</p>'"  >
+                <h6 >Etat émotionnel :</h6>
+                <div [innerHTML]="product.state | html" class="texte"></div>
+            </div>
+
             <h6>Effets positifs :</h6>
             <div [innerHTML]="product.effect | html" class="texte"></div>
         </div>

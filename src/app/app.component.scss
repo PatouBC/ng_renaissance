@@ -1,3 +1,7 @@
+body{
+   margin: 0px;
+   padding: 0px;
+}
 .remaining-space{
    flex: 1 1 auto;
 }
@@ -26,7 +30,10 @@ mat-toolbar{
    background-color: white;
    color: #929292;
    border-bottom-style: solid;
-   border-color: #f3f3f3;
+   border-color: #dadada;
+   position: sticky;
+   top: 0px;
+   z-index: +2;
 }
 .sidenav-submenu{
    margin-left: 80px;
@@ -71,4 +78,24 @@ footer a{
 }
 .underFooter{
    margin: 15px;
+}
+.material-icons {
+   font-size: 30px;
+}
+.connected {
+   font-size: 15px;
+}
+.box {
+   margin-bottom: 10px;
+}
+
+#menu {
+   margin-bottom: 5px;
+}
+#menu2{
+   padding-top: 5px;
+}
+#menuClick {
+   cursor: pointer;
+   font-size: 15px;
 }

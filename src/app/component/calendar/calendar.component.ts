@@ -20,7 +20,7 @@ export class CalendarComponent implements OnInit {
   private consult: Consult;
   private calendarForm: FormGroup;
 
-  private rdvconfirmed = false;
+  rdvconfirmed = false;
 
   consults: Consult[];
 

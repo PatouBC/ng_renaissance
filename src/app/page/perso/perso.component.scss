@@ -17,6 +17,7 @@
   height: 300px;
   margin: 10px;
   color: white;
+  cursor: pointer;
 }
 #vignette1{
   background-image: url("../../../assets/images/fleurs_460.jpg");
@@ -47,5 +48,10 @@ table.mat-table{
 .material-icons{
   cursor: pointer;
 }
-
-
+.closeX{
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.perso {
+  background-color: #afd0ff;
+}

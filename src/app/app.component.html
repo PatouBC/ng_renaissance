@@ -47,15 +47,16 @@
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <mat-toolbar  role="heading">
-      <span>
-        <button mat-button (click)="sidenav.toggle()">
-          <mat-icon>view_headline</mat-icon>
+      <div fxLayout="row" (click)="sidenav.toggle()" id="menuClick">
+        <button mat-button >
+          <mat-icon id="menu">view_headline</mat-icon>
         </button>
-      </span>
+        <div id="menu2">Menu</div>
+      </div>
       <span class="remaining-space"></span>
-      <span *ngIf="!isConnected()">
-        <button mat-button [matMenuTriggerFor]="menu">
-          <mat-icon class="material-icons-outlined">account_box</mat-icon>
+      <span *ngIf="!isConnected()" >
+        <button mat-button [matMenuTriggerFor]="menu" >
+          <mat-icon class="material-icons-outlined box">account_box</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/registration" routerLinkActive="active">
@@ -63,20 +64,20 @@
             <span>Se Connecter</span>
           </button>
         </mat-menu>
-        <span>Non connecté</span>
+        <span class="connected">Non connecté</span>
       </span>
-      <span *ngIf="isConnected()">
+      <span *ngIf="isConnected()" >
         <button mat-button [matMenuTriggerFor]="menu">
-          <mat-icon class="material-icons">account_box</mat-icon>
+          <mat-icon class="material-icons box">account_box</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button routerLink="/perso" routerLinkActive="active" mat-menu-item (click)="sidenav.close()">
-            <mat-icon class="material-icons">account_box</mat-icon>
+            <mat-icon class="material-icons box">account_box</mat-icon>
             <span>Espace personnel</span>
           </button>
           <button mat-menu-item (click)="logout()">
             <mat-icon class="material-icons">close</mat-icon>
-            <span>Se Déconnecter</span>
+            <span class="connected">Se Déconnecter</span>
           </button>
         </mat-menu>
         <span>{{ user?.username }} </span>
@@ -98,8 +99,8 @@
       <div class="underFooter">
         <p>Contact :</p>
         <p>06-84-32-47-95</p>
-        <a href="mailto: perez-valerie@live.fr">
-          <p class="mail">perez-valerie@live.fr</p>
+        <a href="mailto: perez.valerie@live.fr">
+          <p class="mail">perez.valerie@live.fr</p>
         </a>
       </div>
       <a href="https://www.facebook.com/Re-Naissance-Fleurs-de-Bach-1660614733989068/" class="underFooter">
@@ -109,7 +110,10 @@
         <a routerLink="/confidential">politique de confidentialité</a>
         <div fxLayout="row">
           <img class="copyright" src="../assets/images/copyright_50px.png" alt="copyright"/>
-          <p>Patricia Bergez - 2019</p>
+          <a href="https://patricia-bergez.fr">
+            <p>Patricia Bergez - 2019</p>
+          </a>
+
         </div>
 
       </div>

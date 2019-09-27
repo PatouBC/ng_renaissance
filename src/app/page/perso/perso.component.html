@@ -1,71 +1,85 @@
-<div class="container-fluid" fxLayout="row wrap" fxLayoutAlign="space-around ">
-    <div fxLayout="row wrap" fxLayoutAlign="space-around " style="width: 100%">
-        <div class="vignettes" id="vignette1" fxLayoutAlign="center center">
-            <button class="butText" mat-button (click)="toggleInfo()">Mes informations personnelles</button>
+<div class="container-fluid perso" fxLayout="row wrap" fxLayoutAlign="space-around ">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center" style="width: 100%" *ngIf="showVignettes">
+        <div class="vignettes" id="vignette1" fxLayoutAlign="center center" (click)="toggleInfo()">
+            <button class="butText" mat-button >Mes informations personnelles</button>
         </div>
-        <div class="vignettes" id="vignette2" fxLayoutAlign="center center">
-            <button class="butText" mat-button (click)="toggleRdv()">Mes rendez-vous</button>
+        <div class="vignettes" id="vignette2" fxLayoutAlign="center center" (click)="toggleRdv()">
+            <button class="butText" mat-button >Mes rendez-vous</button>
         </div>
-        <div class="vignettes" id="vignette3" fxLayoutAlign="center center">
-            <button class="butText" mat-button (click)="toggleMessage()">Mes messages</button>
+        <div class="vignettes" id="vignette3" fxLayoutAlign="center center" (click)="toggleMessage()">
+            <button class="butText" mat-button >Mes messages</button>
         </div>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="space-around " style="width: 100%">
-        <div class="infoPerso" *ngIf="showInfo">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around " style="width: 100%" >
+        <div class="infoPerso" *ngIf="showInfo" >
+            <div  fxLayoutAlign="end center" (click)="closeInfo()" class="closeX">
+                <div>Fermer</div>
+                <i class="material-icons" >close</i>
+            </div>
+
             <app-profile></app-profile>
         </div>
         <div class="infoRdv"
              *ngIf="showRdv"
-             fxLayout="row wrap"
-             fxLayoutAlign="space-around ">
-            <div *ngIf="showRdv"
-                 fxLayout="row"
-                 fxLayoutAlign="space-around center">
-                <div class="myTable">
-                    <div fxLayout="row" fxLayoutAlign="space-between">
-                        <h4>Mes rendez-vous</h4>
-                        <i class="material-icons" (click)="refreshRdv()">refresh</i>
-                    </div>
+             fxLayout="column">
 
-                    <mat-spinner *ngIf="loading" [diameter]="25" ></mat-spinner>
-                    <ng-container *ngIf="dayparts?.length > 0 ">
-                        <table mat-table [dataSource]="dayparts" class="mat-elevation-z8">
-                            <ng-container matColumnDef="date">
-                                <th  mat-header-cell *matHeaderCellDef>Date</th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{ element.workingDay.daydate }}/
-                                    {{ element.workingDay.daymonth }}/
-                                    {{ element.workingDay.dayyear }}
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="type">
-                                <th  mat-header-cell *matHeaderCellDef>Heure</th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{ element.type.definition }}
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="status">
-                                <th mat-header-cell *matHeaderCellDef>Statut</th>
-                                <td mat-cell *matCellDef="let element">
-                                    <span *ngIf="element.status.value == 10">En attente</span>
-                                    <span *ngIf="element.status.value == 20">Confirmé</span>
-                                </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        </table>
-                    </ng-container>
-                    <ng-container *ngIf="dayparts?.length == 0 ">
-                        <h5>Vous n'avez aucun rendez-vous dans votre liste</h5>
-                    </ng-container>
+                <div fxLayout="row" fxLayoutAlign="end center" (click)="closeInfo()" class="closeX">
+                    <div>Fermer</div>
+                    <i class="material-icons" >close</i>
                 </div>
-            </div>
-            <app-calendar></app-calendar>
+                <div fxLayout="column" fxLayoutAlign="center center">
+
+                    <div class="myTable">
+                        <div fxLayout="row" fxLayoutAlign="space-between">
+                            <h4>Mes rendez-vous</h4>
+                            <i class="material-icons" (click)="refreshRdv()">refresh</i>
+                        </div>
+
+                        <mat-spinner *ngIf="loading" [diameter]="25" ></mat-spinner>
+                        <ng-container *ngIf="dayparts?.length > 0 ">
+                            <table mat-table [dataSource]="dayparts" class="mat-elevation-z8">
+                                <ng-container matColumnDef="date">
+                                    <th  mat-header-cell *matHeaderCellDef>Date</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{ element.workingDay.daydate }}/
+                                        {{ element.workingDay.daymonth }}/
+                                        {{ element.workingDay.dayyear }}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="type">
+                                    <th  mat-header-cell *matHeaderCellDef>Heure</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{ element.type.definition }}
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="status">
+                                    <th mat-header-cell *matHeaderCellDef>Statut</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span *ngIf="element.status.value == 10">En attente</span>
+                                        <span *ngIf="element.status.value == 20">Confirmé</span>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </ng-container>
+                        <ng-container *ngIf="dayparts?.length == 0 ">
+                            <h5>Vous n'avez aucun rendez-vous dans votre liste</h5>
+                        </ng-container>
+                    </div>
+                </div>
+
+
+            <app-calendar fxLayout="column" fxLayoutAlign="center"></app-calendar>
 
         </div>
         <div class="infoMessage"
              *ngIf="showMessage"
              style="width: 100%">
+            <div fxLayout="row" fxLayoutAlign="end center" (click)="closeInfo()" class="closeX">
+                <div>Fermer</div>
+                <i class="material-icons" >close</i>
+            </div>
             <div class="matMessage" fxLayout="column" fxLayoutAlign="center">
                 <mat-spinner *ngIf="loading2" [diameter]="25" ></mat-spinner>
 

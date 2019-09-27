@@ -4,15 +4,15 @@
     </div>
 </div>
 <div class="titleBand" fxLayoutAlign="center center ">
-    <div class="pageTitle">Consultations</div>
+    <h1 class="pageTitle">Consultations</h1>
 </div>
 <div class="containerConsult">
     <h4>Horaires</h4>
     <mat-divider></mat-divider>
     <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <img src="../../../assets/images/cabinet.jpg" width="400px" style="margin: 30px">
+        <img class="img-fluid" src="../../../assets/images/cabinet.jpg"  style="margin: 30px">
         <div class="description ">
-            <p>Les consultations se déroulent :</p>
+            <p>Les horaires de consultation sont les suivants :</p>
             <ul>
                 <ng-container *ngFor="let daytype of daytypes">
                     <li>{{ daytype.definition }}</li>
@@ -23,14 +23,25 @@
             <p>Du <strong>lundi au samedi</strong> pendant les vacances scolaires</p>
         </div>
         <div fxLayoutAlign="center center" id="connectButton">
-            <button mat-flat-button
-                    color="primary"
-                    routerLink="/registration">
-                Prendre rendez-vous en ligne
-            </button>
+            <ng-container *ngIf="isConnected()">
+                <button mat-flat-button
+                        color="primary"
+                        routerLink="/perso">
+                    Prendre rendez-vous en ligne
+                </button>
+            </ng-container>
+            <ng-container *ngIf="!isConnected()">
+                <button mat-flat-button
+                        color="primary"
+                        routerLink="/registration">
+                    Prendre rendez-vous en ligne
+                </button>
+            </ng-container>
+
+
         </div>
     </div>
-    <h4>Tarifs</h4>
+    <h4 id="tarifs">Tarifs</h4>
     <mat-divider></mat-divider>
     <div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutAlign.lt-md="center">
         <div fxLayout="column">
@@ -43,7 +54,7 @@
                 <ul>
                     <ng-container *ngFor="let consult of consults">
                     <li><h6>{{ consult.tittle}} :</h6>
-                        <mat-divider style="width: 400px"></mat-divider>
+                        <mat-divider style="width: 250px"></mat-divider>
                         <p class="pres">{{ consult.description }} : <b>{{ consult.rate }} €</b></p>
                     </li>
                     <ul>

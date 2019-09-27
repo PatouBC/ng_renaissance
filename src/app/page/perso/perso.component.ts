@@ -20,6 +20,7 @@ export class PersoComponent implements OnInit {
   showInfo: boolean;
   showRdv: boolean;
   showMessage: boolean;
+  showVignettes: boolean;
   displayedColumns: string[] = ['date', 'type', 'status'];
 
   loading: boolean;
@@ -36,24 +37,35 @@ export class PersoComponent implements OnInit {
     this.getRdv(this.user.id);
     this.loading = true;
     this.loading2 = true;
+    this.showVignettes = true;
   }
 
   toggleInfo() {
-    this.showInfo = !this.showInfo;
+    this.showInfo = true;
+    this.showRdv = false;
+    this.showMessage = false;
+    this.showVignettes = false;
+  }
+  closeInfo() {
+    this.showVignettes = true;
+    this.showInfo = false;
     this.showRdv = false;
     this.showMessage = false;
   }
   toggleRdv() {
-    this.showRdv = !this.showRdv;
+    this.showRdv = true;
     this.getRdv(this.user.id);
     this.showInfo = false;
     this.showMessage = false;
+    this.showVignettes = false;
   }
+
   toggleMessage() {
-    this.showMessage = !this.showMessage;
+    this.showMessage = true;
     this.getMessages(this.user.id);
-    this.showRdv = false;
     this.showInfo = false;
+    this.showRdv = false;
+    this.showVignettes = false;
   }
 
   getMessages(userId: number) {
@@ -71,13 +83,15 @@ export class PersoComponent implements OnInit {
     });
   }
 
-  refreshRdv(){
-    this.showRdv = true;
+  refreshRdv() {
     this.ngOnInit();
+    this.showVignettes = false;
+    this.showRdv = true;
   }
 
   refreshMessage() {
-    this.showMessage = true;
     this.ngOnInit();
+    this.showVignettes = false;
+    this.showMessage = true;
   }
 }

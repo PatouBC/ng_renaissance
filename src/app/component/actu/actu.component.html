@@ -12,7 +12,7 @@
     <h4>{{ actu.title}}</h4>
     <mat-divider></mat-divider>
 
-    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center">
         <div [innerHTML]="actu.description | html" class="description"></div>
         <div class="imgContainer">
             <app-image

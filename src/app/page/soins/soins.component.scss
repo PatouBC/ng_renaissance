@@ -1,3 +1,7 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
 .logo{
 	background-image: url("../../../assets/images/logo300-re-naissance-claire-body.png");
 	background-size: cover;
@@ -15,17 +19,18 @@
 	color: white;
 }
 .pageTitle{
-	font-size: 2em;
+	font-size: 20px;
+	margin-top: 0.5em;
 }
 .presentation{
 	margin: 50px;
 }
 #reiki{
-	height: 200px;
-	margin: 50px;
+	min-height: 200px;
+	min-width: 100px;
 }
 #reiki2{
-	margin: 50px;
+	margin: 50px 0 50px;
 }
 a{
 	color: #8b1461;

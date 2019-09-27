@@ -27,6 +27,14 @@ export class CalendarService {
     }));
   }
 
+  setRdv(daypart: Daypart, user: User, consult: Consult) {
+    return this.http.put( Globals.APP_API + 'calendar/addrdv', {
+      daypart: daypart.id,
+      user: user.id,
+      consult: consult.id
+    });
+  }
+
   private setAvailabaleAttribute(dayparts: Daypart[]) {
     let available = 0;
     dayparts.forEach((daypart: Daypart) => {
@@ -39,14 +47,6 @@ export class CalendarService {
 
   getConsults() {
     return this.http.get(Globals.APP_API + 'typeconsult');
-  }
-
-  setRdv(daypart: Daypart, user: User, consult: Consult) {
-    return this.http.put( Globals.APP_API + 'calendar/addrdv', {
-      daypart: daypart.id,
-      user: user.id,
-      consult: consult.id
-    });
   }
 
   getRdv(userId: number) {

@@ -19,7 +19,7 @@ import { ImagepathPipe } from './pipe/imagepath.pipe';
 import { AppComponent } from './app.component';
 import { JwtInterceptor } from './class/jwt-interceptor';
 import { ErrorInterceptor } from './class/error-interceptor';
-import {IsSignedInGuard} from './guard/is-signed-in.guard';
+import { IsSignedInGuard } from './guard/is-signed-in.guard';
 
 import { HomeComponent } from './page/home/home.component';
 import { SoinsComponent } from './page/soins/soins.component';
@@ -59,9 +59,6 @@ const appRoutes: Routes = [
   { path: 'consultations',
     component: ConsultationsComponent,
     data : { title: 'Consultations' } },
-  { path: 'perso',
-    component: PersoComponent,
-    data : { title: 'Fleurs et Elixirs' } },
   { path: 'product/:id',
     component: ProductComponent,
     data : { title: 'Fleurs et Elixirs' } },
@@ -76,7 +73,7 @@ const appRoutes: Routes = [
     data : { title: 'Enregistrement' } },
   { path: 'perso',
     component: PersoComponent,
-    canActivate : [IsSignedInGuard],
+    canActivate: [ IsSignedInGuard ],
     data : { title: 'Personnel' } },
   { path: '',
     redirectTo: '/home',

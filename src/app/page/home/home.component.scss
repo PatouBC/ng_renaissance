@@ -1,3 +1,7 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
 .logo{
 	background-image: url("../../../assets/images/logo300-re-naissance-claire-body.png");
 	background-size: cover;
@@ -14,14 +18,18 @@
 	margin: 30px;
 }
 #val{
-	width: 400px;
+	width: 250px;
 	border-radius: 200px;
-	margin: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 30px;
 }
 .titleBand{
 	background-color: #504F8E;
 	color: white;
 }
 .pageTitle{
-	font-size: 2em;
+	font-size: 20px;
+	margin-top: 0.5em;
 }
+

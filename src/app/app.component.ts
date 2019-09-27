@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   opened: boolean;
   user: User|null;
   categories: Category[];
-
   showMenu = false;
 
 
